@@ -39,7 +39,7 @@
 									<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
 								</li>
 								<li>
-									<p>Signed in as <%= current_user.email %></p>
+									<a href="#">Signed in as <%= current_user.email %></a>
 								</li>
 							<% end %>
 						</ul>
