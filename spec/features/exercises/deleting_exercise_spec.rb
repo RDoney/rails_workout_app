@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Deleting Exercise" do
   before do
-    @owner = User.create!(email: "owner@example.com" password: "password")
+    @owner = User.create!(email: "owner@example.com", password: "password")
     @owner_exercise = @owner.exercises.create!(duration_in_min: 48, workout: "Body building activity", workout_date: Date.today)
     login_as(@owner)
   end
@@ -13,7 +13,7 @@ RSpec.feature "Deleting Exercise" do
     click_link "My Lounge"
 
     link = "//a[contains(@href,
- 	         '/users/#{@owner.id}/exercises/#{@owner_exer.id}')
+ 	         '/users/#{@owner.id}/exercises/#{@owner_exercise.id}')
            and .//text()='Destroy']"
     find(:xpath, link).click
 
