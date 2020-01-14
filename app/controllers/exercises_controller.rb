@@ -1,10 +1,11 @@
 class ExercisesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
 
   def index
+    set_current_room
     @exercises = current_user.exercises
     @friends = current_user.friends
-    set_current_room
     @message = Message.new
     @messages = current_room.messages if current_room
     @followers = Friendship.where(friend_id: current_user.id)
@@ -66,4 +67,5 @@ class ExercisesController < ApplicationController
     end
     session[:current_room] = @room.id if @room
   end
+  
 end
